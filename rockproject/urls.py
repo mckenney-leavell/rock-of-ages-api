@@ -1,9 +1,12 @@
 from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
-from rockapi.views import register_user, login_user
+from rockapi.views import register_user, login_user, TypeView
+
 
 router = routers.DefaultRouter(trailing_slash=False)
+router.register(r'types', TypeView, 'type')
+router.register(r'rocks', TypeView, 'rock')
 
 urlpatterns = [
     path('', include(router.urls)),
